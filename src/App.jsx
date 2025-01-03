@@ -7,7 +7,10 @@ import {
 import Events from "./components/Events/Events.jsx";
 import EventDetails from "./components/Events/EventDetails.jsx";
 import NewEvent from "./components/Events/NewEvent.jsx";
-import EditEvent from "./components/Events/EditEvent.jsx";
+import EditEvent, {
+  loader as editEventLoader,
+  action as editEventAction,
+} from "./components/Events/EditEvent.jsx";
 import {
   // QueryClient,
   QueryClientProvider,
@@ -37,6 +40,9 @@ const router = createBrowserRouter([
       {
         path: "/events/:id/edit",
         element: <EditEvent />,
+        // альтернатива useMutation при использовании react router
+        loader: editEventLoader,
+        action: editEventAction,
       },
     ],
   },
